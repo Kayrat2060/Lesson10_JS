@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+		background: #000 url(https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2022/02/12044721/COUV-ARTICLES-1920x1080-38.png);
+
+		/* background-attachment: fixed; */
+	}
+        .peaple-box {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 200px;
+        }
+        .peaple {
+            width: 250px;
+            border: 1px solid #000;
+            padding: 16px;
+            background-color: antiquewhite;
+        }
+        .peaple__img {
+            width: 100%;
+        }
+        .title {
+            color: antiquewhite;
+            margin-top: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>Ученики Хогвартса</h1>
+    </div>
+
+    <div class="content"></div>
+
+
+
+
+    <script src="data.js"></script>
+    <script>
+        const usersData = JSON.parse(data);
+        console.log(usersData);
+        const contentEl = document.querySelector('.content');
+
+        const peapleBox = document.createElement('div');
+        peapleBox.classList.add('peaple-box');
+
+        usersData.people.forEach(peapleData => {
+    const peapleEl = document.createElement('div');
+    peapleEl.classList.add('peaple');
+
+const peapleImg = document.createElement("img");
+peapleImg.classList.add('peaple__img');
+peapleImg.src = peapleData.photo;
+peapleImg.setAttribute('alt', "photo");
+
+const peapleName = document.createElement('h2');
+peapleName.classList.add('peaple__Name');
+peapleName.textContent = peapleData.firstName + " " + peapleData.lastName;
+
+const peapleAge = document.createElement('p');
+peapleAge.classList.add('peaple__Age');
+peapleAge.textContent = 'Возраст : ' + peapleData.age;
+
+const peapleNumber = document.createElement('p');
+peapleNumber.classList.add('peaple__number');
+peapleNumber.textContent = 'Телефон : ' + peapleData.number;
+
+
+peapleEl.appendChild(peapleImg);
+peapleEl.appendChild(peapleName);
+peapleEl.appendChild(peapleAge);
+peapleEl.appendChild(peapleNumber);
+
+peapleBox.appendChild(peapleEl);
+contentEl.appendChild(peapleBox);
+
+});
+
+
+    </script>
+</body>
+</html>
